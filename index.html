@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teuku Rijul | Cybersecurity & Architecture Expert</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --dark-bg: #0a0e17;
+            --card-bg: #111827;
+            --accent: #6366f1;
+            --accent-hover: #4f46e5;
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --border: #1e293b;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+            --transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--dark-bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, var(--accent), #8b5cf6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 0.8rem 1.8rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: 2px solid var(--accent);
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.85rem;
+        }
+
+        .btn:hover {
+            background: transparent;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(99, 102, 241, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--accent);
+        }
+
+        .btn-outline:hover {
+            background: var(--accent);
+            color: white;
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(10, 14, 23, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--text-primary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding-top: 5rem;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
+            z-index: -1;
+        }
+
+        .hero-content {
+            max-width: 650px;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(90deg, var(--text-primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .hero-image {
+            position: absolute;
+            right: 5%;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40%;
+            max-width: 500px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            border: 2px solid var(--accent);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(-50%) translateX(0); }
+            50% { transform: translateY(-52%) translateX(10px); }
+        }
+
+        .profile-img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        .signature {
+            max-width: 200px;
+            margin-top: 1.5rem;
+            filter: drop-shadow(0 5px 10px rgba(0,0,0,0.3));
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .service-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: var(--transition);
+            border: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent);
+            box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.4);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--accent);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: var(--transition);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Testimonials */
+        .testimonials-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 2.5rem;
+            text-align: center;
+            border: 1px solid var(--border);
+            transition: var(--transition);
+        }
+
+        .testimonial-card:hover {
+            transform: scale(1.03);
+            border-color: var(--accent);
+        }
+
+        .quote-icon {
+            font-size: 3rem;
+            color: var(--accent);
+            opacity: 0.3;
+            margin-bottom: 1.5rem;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        .client {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .client-name {
+            font-weight: 600;
+            margin-top: 0.5rem;
+        }
+
+        .client-title {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Pricing */
+        .pricing-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .pricing-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 2.5rem;
+            text-align: center;
+            border: 1px solid var(--border);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing-card.popular {
+            border-color: var(--accent);
+            transform: scale(1.05);
+        }
+
+        .pricing-card.popular::before {
+            content: 'Most Popular';
+            position: absolute;
+            top: 15px;
+            right: -35px;
+            background: var(--accent);
+            color: white;
+            padding: 0.3rem 2rem;
+            transform: rotate(45deg);
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent);
+            box-shadow: var(--shadow);
+        }
+
+        .pricing-card.popular:hover {
+            transform: scale(1.07) translateY(-10px);
+        }
+
+        .price-tag {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin: 1.5rem 0;
+            background: linear-gradient(90deg, var(--accent), #8b5cf6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .price-duration {
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+
+        .features {
+            list-style: none;
+            margin: 2rem 0;
+            text-align: left;
+        }
+
+        .features li {
+            padding: 0.8rem 0;
+            border-bottom: 1px dashed var(--border);
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .features li:last-child {
+            border-bottom: none;
+        }
+
+        .features li i {
+            color: var(--success);
+            margin-right: 0.8rem;
+            margin-top: 0.3rem;
+        }
+
+        /* Contact */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-info h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+        }
+
+        .contact-details {
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-icon {
+            min-width: 50px;
+            height: 50px;
+            background: rgba(99, 102, 241, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            color: var(--accent);
+            font-size: 1.2rem;
+        }
+
+        .contact-text h4 {
+            margin-bottom: 0.3rem;
+        }
+
+        .contact-form .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 1rem;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+        }
+
+        .contact-form textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(180deg, #0c111d 0%, #0a0e17 100%);
+            padding: 3rem 0 1.5rem;
+            text-align: center;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .signature-footer {
+            max-width: 250px;
+            margin: 1.5rem auto;
+            display: block;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(99, 102, 241, 0.1);
+            color: var(--accent);
+            font-size: 1.2rem;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .social-link:hover {
+            background: var(--accent);
+            color: white;
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-top: 1.5rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 3.2rem;
+            }
+            
+            .about-content,
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-image {
+                position: relative;
+                transform: none;
+                width: 100%;
+                max-width: 400px;
+                margin: 3rem auto 0;
+                top: auto;
+                right: auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                right: -100%;
+                flex-direction: column;
+                background: var(--dark-bg);
+                width: 100%;
+                text-align: center;
+                transition: var(--transition);
+                padding: 2rem 0;
+                box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+            }
+            
+            .pricing-card.popular {
+                transform: scale(1);
+            }
+            
+            .pricing-card.popular:hover {
+                transform: translateY(-10px);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.7rem;
+            }
+            
+            section {
+                padding: 3.5rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">Cyber<span>Arch</span></a>
+                <button class="mobile-menu-btn" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content animate">
+                <h1>Cybersecurity Architecture & Strategic Defense</h1>
+                <p>Enterprise-grade security solutions designed to protect your digital assets against evolving threats with military-grade precision.</p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn">Get Consultation</a>
+                    <a href="#services" class="btn btn-outline">Our Services</a>
+                </div>
+            </div>
+            <div class="hero-image animate delay-1">
+                <img src="https://i.ibb.co/pvVsNzyL/IMG-20251221-234651-431.jpg" alt="Teuku Rijul - Cybersecurity Expert" class="profile-img">
+            </div>
+        </div>
+    </section>
+
+<!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>Professional Profile</h2>
+                <p>Expertise forged in high-stakes environments</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text animate">
+                    <h3>Teuku Rijul</h3>
+                    <p>With over 12 years of experience in cybersecurity architecture, I specialize in designing and implementing resilient security frameworks for Fortune 500 companies and government entities. My approach combines offensive security methodologies with defensive architecture principles to create proactive security postures.</p>
+                    <p>Formerly leading security initiatives at major financial institutions and critical infrastructure providers, I bring battlefield-tested strategies to protect your most valuable digital assets against advanced persistent threats.</p>
+                    <p>Certified in CISSP, CCSP, and OSCP with a master's degree in Information Security from MIT, I bridge the gap between technical implementation and executive risk management.</p>
+                    <img src="https://i.ibb.co/27DYMVY5/1766433867655.jpg" alt="Teuku Rijul Signature" class="signature">
+                </div>
+                <div class="about-image animate delay-1">
+                    <!-- Image placeholder for additional visual -->
+                    <div style="background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); height: 300px; border-radius: 20px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--border);">
+                        <span style="color: var(--text-secondary); font-style: italic;">Security Architecture Visualization</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services" style="background: linear-gradient(180deg, #0a0e17 0%, #0c111d 100%);">
+        <div class="container">
+            <div class="section-title">
+                <h2>Specialized Services</h2>
+                <p>Comprehensive security solutions for modern enterprises</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card animate">
+                    <div class="service-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Security Architecture Review</h3>
+                    <p>Comprehensive evaluation of your security infrastructure against industry frameworks (NIST, ISO 27001) with actionable remediation roadmap.</p>
+                    <a href="#contact" class="btn btn-outline">Engage Service</a>
+                </div>
+                <div class="service-card animate delay-1">
+                    <div class="service-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Threat Intelligence Integration</h3>
+                    <p>Custom threat intelligence feeds and analysis systems that predict and neutralize attacks before they impact your operations.</p>
+                    <a href="#contact" class="btn btn-outline">Engage Service</a>
+                </div>
+                <div class="service-card animate delay-2">
+                    <div class="service-icon">
+                        <i class="fas fa-user-secret"></i>
+                    </div>
+                    <h3>Executive Cyber Briefing</h3>
+                    <p>Strategic security briefings tailored for C-suite executives, translating technical risks into business impact scenarios.</p>
+                    <a href="#contact" class="btn btn-outline">Engage Service</a>
+                </div>
+                <div class="service-card animate">
+                    <div class="service-icon">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <h3>Zero Trust Implementation</h3>
+                    <p>End-to-end design and deployment of Zero Trust architectures with micro-segmentation and continuous verification systems.</p>
+                    <a href="#contact" class="btn btn-outline">Engage Service</a>
+                </div>
+                <div class="service-card animate delay-1">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Security Posture Benchmarking</h3>
+                    <p>Quantitative assessment of your security maturity against industry peers with prioritized improvement strategies.</p>
+                    <a href="#contact" class="btn btn-outline">Engage Service</a>
+                </div>
+                <div class="service-card animate delay-2">
+                    <div class="service-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Vendor Risk Assessment</h3>
+                    <p>Rigorous evaluation of third-party security practices with contractual safeguards and continuous monitoring frameworks.</p>
+                    <a href="#contact" class="btn btn-outline">Engage Service</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>Client Endorsements</h2>
+                <p>Validated expertise from industry leaders</p>
+            </div>
+            <div class="testimonials-container animate">
+                <div class="testimonial-card">
+                    <div class="quote-icon">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+                    <p class="testimonial-text">"Teuku's architecture redesign reduced our critical vulnerabilities by 92% while maintaining operational efficiency. His strategic approach transformed our security posture from reactive to proactive."</p>
+                    <div class="client">
+                        <div class="client-info">
+                            <h4 class="client-name">Sarah Chen</h4>
+                            <p class="client-title">CTO, Global Financial Services</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing" style="background: linear-gradient(180deg, #0c111d 0%, #0a0e17 100%);">
+        <div class="container">
+            <div class="section-title">
+                <h2>Premium Engagement Models</h2>
+                <p>Enterprise-grade security solutions</p>
+            </div>
+            <div class="pricing-container">
+                <div class="pricing-card animate">
+                    <h3>Strategic Assessment</h3>
+                    <div class="price-tag">$15,000</div>
+                    <p class="price-duration">One-time engagement</p>
+                    <ul class="features">
+                        <li><i class="fas fa-check-circle"></i> Comprehensive security architecture review</li>
+                        <li><i class="fas fa-check-circle"></i> Threat modeling workshop</li>
+                        <li><i class="fas fa-check-circle"></i> Executive risk briefing</li>
+                        <li><i class="fas fa-check-circle"></i> 30-day remediation roadmap</li>
+                        <li><i class="fas fa-check-circle"></i> 2 follow-up consultations</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-outline">Engage Now</a>
+                </div>
+                <div class="pricing-card popular animate delay-1">
+                    <h3>Enterprise Shield</h3>
+                    <div class="price-tag">$45,000</div>
+                    <p class="price-duration">Quarterly retainer</p>
+                    <ul class="features">
+                        <li><i class="fas fa-check-circle"></i> Everything in Strategic Assessment</li>
+                        <li><i class="fas fa-check-circle"></i> Continuous threat monitoring</li>
+                        <li><i class="fas fa-check-circle"></i> Zero Trust implementation</li>
+                        <li><i class="fas fa-check-circle"></i> 24/7 incident response retainer</li>
+                        <li><i class="fas fa-check-circle"></i> Executive dashboard & reporting</li>
+                    </ul>
+                    <a href="#contact" class="btn">Recommended</a>
+                </div>
+                <div class="pricing-card animate delay-2">
+                    <h3>Board Advisory</h3>
+                    <div class="price-tag">$8,500</div>
+                    <p class="price-duration">Monthly retainer</p>
+                    <ul class="features">
+                        <li><i class="fas fa-check-circle"></i> CISO-level strategic guidance</li>
+                        <li><i class="fas fa-check-circle"></i> Regulatory compliance oversight</li>
+                        <li><i class="fas fa-check-circle"></i> M&A security due diligence</li>
+                        <li><i class="fas fa-check-circle"></i> Board-level cyber risk reporting</li>
+                        <li><i class="fas fa-check-circle"></i> Crisis simulation exercises</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-outline">Engage Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Secure Consultation</h2>
+                <p>Begin your security transformation</p>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info animate">
+                    <h3>Strategic Security Partnerships</h3>
+                    <p>For enterprise engagements, government contracts, or board-level advisory services, schedule a confidential consultation to discuss your unique security challenges.</p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Global Operations</h4>
+                                <p>Remote engagements with on-site presence as required</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Response Time</h4>
+                                <p>Critical incidents: Under 2 hours</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form animate delay-1">
+                    <form>
+                        <div class="form-group">
+                            <input type="text" placeholder="Full Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Corporate Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" placeholder="Organization">
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Security Requirements & Concerns" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Schedule Consultation</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <img src="https://i.ibb.co/27DYMVY5/1766433867655.jpg" alt="Teuku Rijul Signature" class="signature-footer">
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                </div>
+                <p class="copyright">
+                    &copy; 2026 Teuku Rijul | Cybersecurity Architecture | All rights reserved<br>
+                    Certified Security Architect | CISSP | CCSP | OSCP
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            menuToggle.querySelector('i').classList.toggle('fa-bars');
+            menuToggle.querySelector('i').classList.toggle('fa-times');
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                menuToggle.querySelector('i').classList.add('fa-bars');
+                menuToggle.querySelector('i').classList.remove('fa-times');
+            });
+        });
+        
+        // Animation on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const animateElements = document.querySelectorAll('.animate');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.visibility = 'visible';
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            animateElements.forEach(element => {
+                element.style.opacity = 0;
+                element.style.visibility = 'hidden';
+                element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(element);
+            });
+        });
+        
+        // Form submission (prevent default for demo)
+        document.querySelector('.contact-form form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Consultation request received. We will contact you within 2 business hours regarding your cybersecurity needs.');
+            this.reset();
+        });
+    </script>
+</body>
+  </html>
