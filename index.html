@@ -3,120 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Teuku Rijul | Cybersecurity & Architecture Expert</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <title>Teuku Rijul | Strategic Cyber Architect & Enterprise Defense</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Plus+Jakarta+Sans:wght@200;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
     <style>
         :root {
-            --dark-bg: #0a0e17;
-            --card-bg: #111827;
-            --accent: #6366f1;
-            --accent-hover: #4f46e5;
-            --text-primary: #f1f5f9;
-            --text-secondary: #94a3b8;
-            --border: #1e293b;
-            --success: #10b981;
-            --warning: #f59e0b;
-            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
-            --transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+            --brand-dark: #030712;
+            --brand-surface: #0f172a;
+            --brand-primary: #2563eb;
+            --brand-secondary: #0ea5e9;
+            --brand-accent: #38bdf8;
+            --brand-gold: #fbbf24;
+            --text-light: #f8fafc;
+            --text-muted: #94a3b8;
+            --glass-v2: rgba(30, 41, 59, 0.5);
+            --border-v2: rgba(255, 255, 255, 0.08);
+            --shadow-pro: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            scroll-behavior: smooth;
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background: var(--dark-bg);
-            color: var(--text-primary);
-            line-height: 1.6;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--brand-dark);
+            color: var(--text-light);
+            line-height: 1.7;
             overflow-x: hidden;
         }
 
+        /* --- BACKGROUND DYNAMICS --- */
+        .bg-mesh {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 10% 20%, rgba(37, 99, 235, 0.05) 0%, transparent 40%),
+                        radial-gradient(circle at 90% 80%, rgba(14, 165, 233, 0.05) 0%, transparent 40%);
+            z-index: -1;
+        }
+
         .container {
-            width: 90%;
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 0 1.5rem;
+            padding: 0 3rem;
         }
 
-        section {
-            padding: 5rem 0;
-        }
-
-        .section-title {
-            font-family: 'Space Grotesk', sans-serif;
-            text-align: center;
-            margin-bottom: 3rem;
-            position: relative;
-        }
-
-        .section-title h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            background: linear-gradient(90deg, var(--accent), #8b5cf6);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: var(--accent);
-            border-radius: 2px;
-        }
-
-        .btn {
-            display: inline-block;
-            background: var(--accent);
-            color: white;
-            padding: 0.8rem 1.8rem;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: var(--transition);
-            border: 2px solid var(--accent);
-            cursor: pointer;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 0.85rem;
-        }
-
-        .btn:hover {
-            background: transparent;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(99, 102, 241, 0.4);
-        }
-
-        .btn-outline {
-            background: transparent;
-            color: var(--accent);
-        }
-
-        .btn-outline:hover {
-            background: var(--accent);
-            color: white;
-        }
-
-        /* Header & Navigation */
+        /* --- HEADER --- */
         header {
             position: fixed;
-            top: 0;
-            left: 0;
             width: 100%;
-            z-index: 1000;
-            background: rgba(10, 14, 23, 0.95);
-            backdrop-filter: blur(10px);
+            top: 0; z-index: 1000;
+            padding: 2rem 0;
+            transition: 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        header.scrolled {
             padding: 1rem 0;
-            border-bottom: 1px solid var(--border);
+            background: rgba(3, 7, 18, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-v2);
         }
 
         nav {
@@ -129,891 +80,377 @@
             font-family: 'Space Grotesk', sans-serif;
             font-size: 1.8rem;
             font-weight: 700;
-            color: var(--accent);
+            letter-spacing: -1.5px;
+            color: #fff;
             text-decoration: none;
         }
 
-        .logo span {
-            color: var(--text-primary);
-        }
+        .logo span { color: var(--brand-primary); }
 
         .nav-links {
             display: flex;
+            gap: 4rem;
             list-style: none;
-            gap: 2rem;
         }
 
         .nav-links a {
-            color: var(--text-secondary);
             text-decoration: none;
-            font-weight: 500;
-            transition: var(--transition);
-            position: relative;
-            padding: 0.5rem 0;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: 0.3s;
         }
 
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--accent);
-            transition: var(--transition);
-        }
+        .nav-links a:hover { color: var(--brand-accent); }
 
-        .nav-links a:hover {
-            color: var(--accent);
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: var(--text-primary);
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        /* Hero Section */
+        /* --- HERO --- */
         .hero {
             min-height: 100vh;
             display: flex;
             align-items: center;
             position: relative;
-            overflow: hidden;
             padding-top: 5rem;
         }
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
-            z-index: -1;
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 5rem;
+            align-items: center;
         }
 
-        .hero-content {
-            max-width: 650px;
-            z-index: 2;
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            background: rgba(37, 99, 235, 0.1);
+            border: 1px solid rgba(37, 99, 235, 0.2);
+            padding: 0.6rem 1.2rem;
+            border-radius: 100px;
+            color: var(--brand-accent);
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 2.5rem;
         }
 
         .hero h1 {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 4rem;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(90deg, var(--text-primary), var(--accent));
+            font-size: clamp(3.5rem, 7vw, 5.5rem);
+            line-height: 1;
+            font-weight: 700;
+            margin-bottom: 2rem;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(90deg, #fff, var(--brand-primary));
             -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+            -webkit-text-fill-color: transparent;
         }
 
         .hero p {
             font-size: 1.25rem;
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
+            color: var(--text-muted);
             max-width: 600px;
+            margin-bottom: 3.5rem;
         }
 
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-
-        .hero-image {
-            position: absolute;
-            right: 5%;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 40%;
-            max-width: 500px;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            border: 2px solid var(--accent);
-            animation: float 6s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(-50%) translateX(0); }
-            50% { transform: translateY(-52%) translateX(10px); }
-        }
-
-        .profile-img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        /* About Section */
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-        }
-
-        .about-text h3 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-            color: var(--accent);
-        }
-
-        .about-text p {
-            margin-bottom: 1.5rem;
-            color: var(--text-secondary);
-        }
-
-        .signature {
-            max-width: 200px;
-            margin-top: 1.5rem;
-            filter: drop-shadow(0 5px 10px rgba(0,0,0,0.3));
-        }
-
-        /* Services Section */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .service-card {
-            background: var(--card-bg);
-            border-radius: 16px;
-            padding: 2rem;
-            transition: var(--transition);
-            border: 1px solid var(--border);
+        .hero-image-box {
             position: relative;
+            border-radius: 40px;
             overflow: hidden;
+            box-shadow: var(--shadow-pro);
+            border: 1px solid var(--border-v2);
         }
 
-        .service-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--accent);
-            box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.4);
+        .hero-image-box img {
+            width: 100%;
+            display: block;
+            transition: 0.6s transform cubic-bezier(0.165, 0.84, 0.44, 1);
         }
 
-        .service-card::before {
+        .hero-image-box:hover img { transform: scale(1.05); }
+
+        /* --- TIMELINE SECTION --- */
+        .timeline-section { padding: 10rem 0; background: rgba(15, 23, 42, 0.3); }
+
+        .timeline-container {
+            position: relative;
+            max-width: 900px;
+            margin: 4rem auto;
+        }
+
+        .timeline-container::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: var(--accent);
-            transform: scaleX(0);
-            transform-origin: right;
-            transition: var(--transition);
+            left: 50%; width: 2px; height: 100%;
+            background: var(--border-v2);
+            transform: translateX(-50%);
         }
 
-        .service-card:hover::before {
-            transform: scaleX(1);
-            transform-origin: left;
+        .timeline-item {
+            margin-bottom: 5rem;
+            position: relative;
+            width: 50%;
+            padding: 0 3rem;
         }
 
-        .service-icon {
-            font-size: 2.5rem;
-            color: var(--accent);
-            margin-bottom: 1.5rem;
+        .timeline-item:nth-child(odd) { left: 0; text-align: right; }
+        .timeline-item:nth-child(even) { left: 50%; text-align: left; }
+
+        .timeline-dot {
+            position: absolute;
+            width: 20px; height: 20px;
+            background: var(--brand-primary);
+            border-radius: 50%;
+            top: 10px;
+            box-shadow: 0 0 20px var(--brand-primary);
         }
 
-        .service-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
+        .timeline-item:nth-child(odd) .timeline-dot { right: -10px; }
+        .timeline-item:nth-child(even) .timeline-dot { left: -10px; }
 
-        .service-card p {
-            color: var(--text-secondary);
-            margin-bottom: 1.5rem;
-        }
+        .timeline-content h4 { color: var(--brand-accent); font-size: 1.4rem; }
+        .timeline-content span { font-size: 0.8rem; color: var(--text-muted); }
 
-        /* Testimonials */
-        .testimonials-container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
+        /* --- CARDS & SERVICES --- */
+        .services-pro { padding: 10rem 0; }
 
-        .testimonial-card {
-            background: var(--card-bg);
-            border-radius: 16px;
-            padding: 2.5rem;
-            text-align: center;
-            border: 1px solid var(--border);
-            transition: var(--transition);
-        }
-
-        .testimonial-card:hover {
-            transform: scale(1.03);
-            border-color: var(--accent);
-        }
-
-        .quote-icon {
-            font-size: 3rem;
-            color: var(--accent);
-            opacity: 0.3;
-            margin-bottom: 1.5rem;
-        }
-
-        .testimonial-text {
-            font-style: italic;
-            font-size: 1.1rem;
-            margin-bottom: 1.5rem;
-            color: var(--text-secondary);
-        }
-
-        .client {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .client-name {
-            font-weight: 600;
-            margin-top: 0.5rem;
-        }
-
-        .client-title {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-        }
-
-        /* Pricing */
-        .pricing-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .pricing-card {
-            background: var(--card-bg);
-            border-radius: 16px;
-            padding: 2.5rem;
-            text-align: center;
-            border: 1px solid var(--border);
-            transition: var(--transition);
+        .glass-card {
+            background: var(--glass-v2);
+            border: 1px solid var(--border-v2);
+            backdrop-filter: blur(15px);
+            padding: 4rem;
+            border-radius: 40px;
+            transition: 0.4s;
             position: relative;
             overflow: hidden;
         }
 
-        .pricing-card.popular {
-            border-color: var(--accent);
-            transform: scale(1.05);
-        }
-
-        .pricing-card.popular::before {
-            content: 'Most Popular';
+        .glass-card::before {
+            content: '';
             position: absolute;
-            top: 15px;
-            right: -35px;
-            background: var(--accent);
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(37, 99, 235, 0.1));
+            opacity: 0; transition: 0.4s;
+        }
+
+        .glass-card:hover::before { opacity: 1; }
+
+        .glass-card:hover {
+            transform: translateY(-15px);
+            border-color: var(--brand-primary);
+            box-shadow: 0 40px 80px -20px rgba(0,0,0,0.6);
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 2.5rem;
+            color: var(--brand-accent);
+        }
+
+        /* --- CTA BOX --- */
+        .cta-premium {
+            background: linear-gradient(135deg, #1e293b 0%, #030712 100%);
+            border-radius: 60px;
+            padding: 6rem;
+            border: 1px solid var(--border-v2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 4rem;
+        }
+
+        .btn-premium {
+            background: var(--brand-primary);
             color: white;
-            padding: 0.3rem 2rem;
-            transform: rotate(45deg);
-            font-size: 0.8rem;
-            font-weight: 600;
-        }
-
-        .pricing-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--accent);
-            box-shadow: var(--shadow);
-        }
-
-        .pricing-card.popular:hover {
-            transform: scale(1.07) translateY(-10px);
-        }
-
-        .price-tag {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 3.5rem;
-            font-weight: 700;
-            margin: 1.5rem 0;
-            background: linear-gradient(90deg, var(--accent), #8b5cf6);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        .price-duration {
-            color: var(--text-secondary);
-            font-size: 1rem;
-        }
-
-        .features {
-            list-style: none;
-            margin: 2rem 0;
-            text-align: left;
-        }
-
-        .features li {
-            padding: 0.8rem 0;
-            border-bottom: 1px dashed var(--border);
-            display: flex;
-            align-items: flex-start;
-        }
-
-        .features li:last-child {
-            border-bottom: none;
-        }
-
-        .features li i {
-            color: var(--success);
-            margin-right: 0.8rem;
-            margin-top: 0.3rem;
-        }
-
-        /* Contact */
-        .contact-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-        }
-
-        .contact-info h3 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-            color: var(--accent);
-        }
-
-        .contact-details {
-            margin-top: 2rem;
-        }
-
-        .contact-item {
-            display: flex;
-            margin-bottom: 1.5rem;
-        }
-
-        .contact-icon {
-            min-width: 50px;
-            height: 50px;
-            background: rgba(99, 102, 241, 0.1);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 1rem;
-            color: var(--accent);
-            font-size: 1.2rem;
-        }
-
-        .contact-text h4 {
-            margin-bottom: 0.3rem;
-        }
-
-        .contact-form .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .contact-form input,
-        .contact-form textarea {
-            width: 100%;
-            padding: 1rem;
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            color: var(--text-primary);
-            font-family: 'Inter', sans-serif;
-            font-size: 1rem;
-            transition: var(--transition);
-        }
-
-        .contact-form input:focus,
-        .contact-form textarea:focus {
-            outline: none;
-            border-color: var(--accent);
-            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
-        }
-
-        .contact-form textarea {
-            min-height: 150px;
-            resize: vertical;
-        }
-
-        /* Footer */
-        footer {
-            background: linear-gradient(180deg, #0c111d 0%, #0a0e17 100%);
-            padding: 3rem 0 1.5rem;
-            text-align: center;
-            border-top: 1px solid var(--border);
-        }
-
-        .footer-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .signature-footer {
-            max-width: 250px;
-            margin: 1.5rem auto;
-            display: block;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin: 1.5rem 0;
-        }
-
-        .social-link {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: rgba(99, 102, 241, 0.1);
-            color: var(--accent);
-            font-size: 1.2rem;
-            transition: var(--transition);
+            padding: 1.5rem 3.5rem;
+            border-radius: 20px;
+            font-weight: 800;
             text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+            transition: 0.4s;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 15px 30px rgba(37, 99, 235, 0.3);
         }
 
-        .social-link:hover {
-            background: var(--accent);
-            color: white;
-            transform: translateY(-5px);
+        .btn-premium:hover {
+            background: var(--brand-secondary);
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(37, 99, 235, 0.4);
         }
 
-        .copyright {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            margin-top: 1.5rem;
+        /* --- FOOTER --- */
+        footer {
+            padding: 8rem 0 4rem;
+            text-align: center;
+            background: #020617;
         }
 
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .sig-footer {
+            height: 70px;
+            filter: invert(1);
+            opacity: 0.7;
+            margin-bottom: 3rem;
         }
 
-        .animate {
-            animation: fadeInUp 0.8s ease forwards;
-        }
-
-        .delay-1 { animation-delay: 0.2s; }
-        .delay-2 { animation-delay: 0.4s; }
-        .delay-3 { animation-delay: 0.6s; }
-
-        /* Responsive Design */
-        @media (max-width: 992px) {
-            .hero h1 {
-                font-size: 3.2rem;
-            }
-            
-            .about-content,
-            .contact-container {
-                grid-template-columns: 1fr;
-            }
-            
-            .hero-image {
-                position: relative;
-                transform: none;
-                width: 100%;
-                max-width: 400px;
-                margin: 3rem auto 0;
-                top: auto;
-                right: auto;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .mobile-menu-btn {
-                display: block;
-            }
-            
-            .nav-links {
-                position: fixed;
-                top: 70px;
-                right: -100%;
-                flex-direction: column;
-                background: var(--dark-bg);
-                width: 100%;
-                text-align: center;
-                transition: var(--transition);
-                padding: 2rem 0;
-                box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-            }
-            
-            .nav-links.active {
-                right: 0;
-            }
-            
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .section-title h2 {
-                font-size: 2rem;
-            }
-            
-            .hero-buttons {
-                flex-direction: column;
-            }
-            
-            .pricing-card.popular {
-                transform: scale(1);
-            }
-            
-            .pricing-card.popular:hover {
-                transform: translateY(-10px);
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
-            .section-title h2 {
-                font-size: 1.7rem;
-            }
-            
-            section {
-                padding: 3.5rem 0;
-            }
+        /* --- MOBILE --- */
+        @media (max-width: 1024px) {
+            .hero-grid { grid-template-columns: 1fr; text-align: center; }
+            .hero-content { order: 2; }
+            .hero-image-box { order: 1; max-width: 500px; margin: 0 auto; }
+            .hero h1 { font-size: 3.5rem; }
+            .cta-premium { flex-direction: column; text-align: center; padding: 4rem 2rem; }
+            .timeline-container::before { left: 0; }
+            .timeline-item { width: 100%; text-align: left !important; padding-left: 3rem; }
+            .timeline-dot { left: -10px !important; }
+            .nav-links { display: none; }
         }
     </style>
 </head>
 <body>
-    <!-- Header & Navigation -->
-    <header>
+
+    <div class="bg-mesh"></div>
+
+    <header id="topHeader">
         <div class="container">
             <nav>
-                <a href="#" class="logo">Cyber<span>Arch</span></a>
-                <button class="mobile-menu-btn" id="menuToggle">
-                    <i class="fas fa-bars"></i>
-                </button>
-                <ul class="nav-links" id="navLinks">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#testimonials">Testimonials</a></li>
-                    <li><a href="#pricing">Pricing</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                <a href="#" class="logo">RIJUL<span>STRATEGIC</span></a>
+                <ul class="nav-links">
+                    <li><a href="#about">Milestones</a></li>
+                    <li><a href="#services">Architecture</a></li>
+                    <li><a href="#contact">Consultation</a></li>
                 </ul>
+                <div class="header-action">
+                    <a href="#contact" class="btn-premium" style="padding: 0.8rem 2rem; border-radius: 12px; font-size: 0.7rem;">Secure Briefing</a>
+                </div>
             </nav>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
+    <section class="hero">
         <div class="container">
-            <div class="hero-content animate">
-                <h1>Cybersecurity Architecture & Strategic Defense</h1>
-                <p>Enterprise-grade security solutions designed to protect your digital assets against evolving threats with military-grade precision.</p>
-                <div class="hero-buttons">
-                    <a href="#contact" class="btn">Get Consultation</a>
-                    <a href="#services" class="btn btn-outline">Our Services</a>
-                </div>
-            </div>
-            <div class="hero-image animate delay-1">
-                <img src="https://i.ibb.co/pvVsNzyL/IMG-20251221-234651-431.jpg" alt="Teuku Rijul - Cybersecurity Expert" class="profile-img">
-            </div>
-        </div>
-    </section>
-
-<!-- About Section -->
-    <section class="about" id="about">
-        <div class="container">
-            <div class="section-title">
-                <h2>Professional Profile</h2>
-                <p>Expertise forged in high-stakes environments</p>
-            </div>
-            <div class="about-content">
-                <div class="about-text animate">
-                    <h3>Teuku Rijul</h3>
-                    <p>With over 12 years of experience in cybersecurity architecture, I specialize in designing and implementing resilient security frameworks for Fortune 500 companies and government entities. My approach combines offensive security methodologies with defensive architecture principles to create proactive security postures.</p>
-                    <p>Formerly leading security initiatives at major financial institutions and critical infrastructure providers, I bring battlefield-tested strategies to protect your most valuable digital assets against advanced persistent threats.</p>
-                    <p>Certified in CISSP, CCSP, and OSCP with a master's degree in Information Security from MIT, I bridge the gap between technical implementation and executive risk management.</p>
-                    <img src="https://i.ibb.co/27DYMVY5/1766433867655.jpg" alt="Teuku Rijul Signature" class="signature">
-                </div>
-                <div class="about-image animate delay-1">
-                    <!-- Image placeholder for additional visual -->
-                    <div style="background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); height: 300px; border-radius: 20px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--border);">
-                        <span style="color: var(--text-secondary); font-style: italic;">Security Architecture Visualization</span>
+            <div class="hero-grid">
+                <div class="hero-content" data-aos="fade-right">
+                    <div class="hero-badge">
+                        <i class="fas fa-microchip"></i> QUANTUM-READY SECURITY ARCHITECTURE
                     </div>
+                    <h1>Fortifying the <span>Future</span> of Enterprise.</h1>
+                    <p>Strategic cybersecurity defense for the world's most critical infrastructures. Led by Teuku Rijul, an elite architect with 12+ years of battlefield experience.</p>
+                    <div style="display: flex; gap: 2rem; align-items: center;">
+                        <a href="#contact" class="btn-premium">Initiate Partnership <i class="fas fa-chevron-right" style="margin-left: 10px;"></i></a>
+                    </div>
+                </div>
+                <div class="hero-image-box" data-aos="zoom-in" data-aos-delay="200">
+                    <img src="https://i.ibb.co/CKQcWcvP/IMG-20260122-224519.png" alt="Teuku Rijul Professional">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section class="services" id="services" style="background: linear-gradient(180deg, #0a0e17 0%, #0c111d 100%);">
+    <section class="timeline-section" id="about">
         <div class="container">
-            <div class="section-title">
-                <h2>Specialized Services</h2>
-                <p>Comprehensive security solutions for modern enterprises</p>
+            <div style="text-align: center; margin-bottom: 6rem;" data-aos="fade-up">
+                <h2 style="font-family: 'Space Grotesk'; font-size: 3rem;">Professional Milestones</h2>
+                <p style="color: var(--text-muted);">A decade of securing high-value digital ecosystems.</p>
             </div>
-            <div class="services-grid">
-                <div class="service-card animate">
-                    <div class="service-icon">
-                        <i class="fas fa-shield-alt"></i>
+            
+            <div class="timeline-container">
+                <div class="timeline-item" data-aos="fade-right">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span>2024 - 2026</span>
+                        <h4>Lead Security Architect</h4>
+                        <p>Managing defense systems for Global Tier-1 Financial Institutions.</p>
                     </div>
-                    <h3>Security Architecture Review</h3>
-                    <p>Comprehensive evaluation of your security infrastructure against industry frameworks (NIST, ISO 27001) with actionable remediation roadmap.</p>
-                    <a href="#contact" class="btn btn-outline">Engage Service</a>
                 </div>
-                <div class="service-card animate delay-1">
-                    <div class="service-icon">
-                        <i class="fas fa-bolt"></i>
+                <div class="timeline-item" data-aos="fade-left">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span>2020 - 2023</span>
+                        <h4>Strategic Threat Intel</h4>
+                        <p>Developed AI-driven threat hunting models for Gov-Tech sectors.</p>
                     </div>
-                    <h3>Threat Intelligence Integration</h3>
-                    <p>Custom threat intelligence feeds and analysis systems that predict and neutralize attacks before they impact your operations.</p>
-                    <a href="#contact" class="btn btn-outline">Engage Service</a>
                 </div>
-                <div class="service-card animate delay-2">
-                    <div class="service-icon">
-                        <i class="fas fa-user-secret"></i>
-                    </div>
-                    <h3>Executive Cyber Briefing</h3>
-                    <p>Strategic security briefings tailored for C-suite executives, translating technical risks into business impact scenarios.</p>
-                    <a href="#contact" class="btn btn-outline">Engage Service</a>
-                </div>
-                <div class="service-card animate">
-                    <div class="service-icon">
-                        <i class="fas fa-project-diagram"></i>
-                    </div>
-                    <h3>Zero Trust Implementation</h3>
-                    <p>End-to-end design and deployment of Zero Trust architectures with micro-segmentation and continuous verification systems.</p>
-                    <a href="#contact" class="btn btn-outline">Engage Service</a>
-                </div>
-                <div class="service-card animate delay-1">
-                    <div class="service-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h3>Security Posture Benchmarking</h3>
-                    <p>Quantitative assessment of your security maturity against industry peers with prioritized improvement strategies.</p>
-                    <a href="#contact" class="btn btn-outline">Engage Service</a>
-                </div>
-                <div class="service-card animate delay-2">
-                    <div class="service-icon">
-                        <i class="fas fa-handshake"></i>
-                    </div>
-                    <h3>Vendor Risk Assessment</h3>
-                    <p>Rigorous evaluation of third-party security practices with contractual safeguards and continuous monitoring frameworks.</p>
-                    <a href="#contact" class="btn btn-outline">Engage Service</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section class="testimonials" id="testimonials">
-        <div class="container">
-            <div class="section-title">
-                <h2>Client Endorsements</h2>
-                <p>Validated expertise from industry leaders</p>
-            </div>
-            <div class="testimonials-container animate">
-                <div class="testimonial-card">
-                    <div class="quote-icon">
-                        <i class="fas fa-quote-left"></i>
-                    </div>
-                    <p class="testimonial-text">"Teuku's architecture redesign reduced our critical vulnerabilities by 92% while maintaining operational efficiency. His strategic approach transformed our security posture from reactive to proactive."</p>
-                    <div class="client">
-                        <div class="client-info">
-                            <h4 class="client-name">Sarah Chen</h4>
-                            <p class="client-title">CTO, Global Financial Services</p>
-                        </div>
+                <div class="timeline-item" data-aos="fade-right">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span>2015 - 2019</span>
+                        <h4>Infrastructure Hardening</h4>
+                        <p>Redesigned Zero-Trust networks for multinational conglomerates.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Pricing Section -->
-    <section class="pricing" id="pricing" style="background: linear-gradient(180deg, #0c111d 0%, #0a0e17 100%);">
+    <section class="services-pro" id="services">
         <div class="container">
-            <div class="section-title">
-                <h2>Premium Engagement Models</h2>
-                <p>Enterprise-grade security solutions</p>
-            </div>
-            <div class="pricing-container">
-                <div class="pricing-card animate">
-                    <h3>Strategic Assessment</h3>
-                    <div class="price-tag">$15,000</div>
-                    <p class="price-duration">One-time engagement</p>
-                    <ul class="features">
-                        <li><i class="fas fa-check-circle"></i> Comprehensive security architecture review</li>
-                        <li><i class="fas fa-check-circle"></i> Threat modeling workshop</li>
-                        <li><i class="fas fa-check-circle"></i> Executive risk briefing</li>
-                        <li><i class="fas fa-check-circle"></i> 30-day remediation roadmap</li>
-                        <li><i class="fas fa-check-circle"></i> 2 follow-up consultations</li>
-                    </ul>
-                    <a href="#contact" class="btn btn-outline">Engage Now</a>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 3rem;">
+                <div class="glass-card" data-aos="fade-up">
+                    <div class="card-icon"><i class="fas fa-project-diagram"></i></div>
+                    <h3>Global Architecture</h3>
+                    <p style="color: var(--text-muted); margin-top: 1.5rem;">Scalable security designs for distributed cloud environments and hybrid infrastructures.</p>
                 </div>
-                <div class="pricing-card popular animate delay-1">
-                    <h3>Enterprise Shield</h3>
-                    <div class="price-tag">$45,000</div>
-                    <p class="price-duration">Quarterly retainer</p>
-                    <ul class="features">
-                        <li><i class="fas fa-check-circle"></i> Everything in Strategic Assessment</li>
-                        <li><i class="fas fa-check-circle"></i> Continuous threat monitoring</li>
-                        <li><i class="fas fa-check-circle"></i> Zero Trust implementation</li>
-                        <li><i class="fas fa-check-circle"></i> 24/7 incident response retainer</li>
-                        <li><i class="fas fa-check-circle"></i> Executive dashboard & reporting</li>
-                    </ul>
-                    <a href="#contact" class="btn">Recommended</a>
-                </div>
-                <div class="pricing-card animate delay-2">
-                    <h3>Board Advisory</h3>
-                    <div class="price-tag">$8,500</div>
-                    <p class="price-duration">Monthly retainer</p>
-                    <ul class="features">
-                        <li><i class="fas fa-check-circle"></i> CISO-level strategic guidance</li>
-                        <li><i class="fas fa-check-circle"></i> Regulatory compliance oversight</li>
-                        <li><i class="fas fa-check-circle"></i> M&A security due diligence</li>
-                        <li><i class="fas fa-check-circle"></i> Board-level cyber risk reporting</li>
-                        <li><i class="fas fa-check-circle"></i> Crisis simulation exercises</li>
-                    </ul>
-                    <a href="#contact" class="btn btn-outline">Engage Now</a>
+                <div class="glass-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card-icon"><i class="fas fa-user-secret"></i></div>
+                    <h3>Board Intelligence</h3>
+                    <p style="color: var(--text-muted); margin-top: 1.5rem;">C-suite advisory focusing on ROI-driven security investment and risk mitigation strategies.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section class="contact" id="contact">
+    <section class="contact-area" id="contact" style="padding: 10rem 0;">
         <div class="container">
-            <div class="section-title">
-                <h2>Secure Consultation</h2>
-                <p>Begin your security transformation</p>
-            </div>
-            <div class="contact-container">
-                <div class="contact-info animate">
-                    <h3>Strategic Security Partnerships</h3>
-                    <p>For enterprise engagements, government contracts, or board-level advisory services, schedule a confidential consultation to discuss your unique security challenges.</p>
-                    <div class="contact-details">
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div class="contact-text">
-                                <h4>Global Operations</h4>
-                                <p>Remote engagements with on-site presence as required</p>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-clock"></i>
-                            </div>
-                            <div class="contact-text">
-                                <h4>Response Time</h4>
-                                <p>Critical incidents: Under 2 hours</p>
-                            </div>
-                        </div>
+            <div class="cta-premium" data-aos="zoom-out">
+                <div style="max-width: 600px;">
+                    <h2 style="font-family: 'Space Grotesk'; font-size: 3.5rem; line-height: 1.1; margin-bottom: 2rem;">Ready for an Elite Defense?</h2>
+                    <p style="font-size: 1.2rem; opacity: 0.8; margin-bottom: 3rem;">Contact Teuku Rijul for high-level enterprise consultation and architectural oversight.</p>
+                    <div style="display: flex; gap: 1.5rem;">
+                        <span style="font-size: 0.8rem; color: var(--brand-accent); font-weight: 700;">#CISSP</span>
+                        <span style="font-size: 0.8rem; color: var(--brand-accent); font-weight: 700;">#OSCP</span>
+                        <span style="font-size: 0.8rem; color: var(--brand-accent); font-weight: 700;">#ENTERPRISE_READY</span>
                     </div>
                 </div>
-                <div class="contact-form animate delay-1">
-                    <form>
-                        <div class="form-group">
-                            <input type="text" placeholder="Full Name" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" placeholder="Corporate Email" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" placeholder="Organization">
-                        </div>
-                        <div class="form-group">
-                            <textarea placeholder="Security Requirements & Concerns" required></textarea>
-                        </div>
-                        <button type="submit" class="btn">Schedule Consultation</button>
-                    </form>
+                <div style="flex-shrink: 0;">
+                    <button class="btn-premium" onclick="window.location.href='mailto:your-email@domain.com'">Request Secure Consultation</button>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <div class="container">
-            <div class="footer-content">
-                <img src="https://i.ibb.co/27DYMVY5/1766433867655.jpg" alt="Teuku Rijul Signature" class="signature-footer">
-                <div class="social-links">
-                    <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-github"></i></a>
-                </div>
-                <p class="copyright">
-                    &copy; 2026 Teuku Rijul | Cybersecurity Architecture | All rights reserved<br>
-                    Certified Security Architect | CISSP | CCSP | OSCP
-                </p>
+            <img src="https://i.ibb.co/27DYMVY5/1766433867655.jpg" alt="Signature" class="sig-footer">
+            <div style="display: flex; justify-content: center; gap: 3rem; margin-bottom: 3rem;">
+                <a href="#" style="color: var(--text-muted); font-size: 1.5rem;"><i class="fab fa-linkedin"></i></a>
+                <a href="#" style="color: var(--text-muted); font-size: 1.5rem;"><i class="fab fa-twitter"></i></a>
+                <a href="#" style="color: var(--text-muted); font-size: 1.5rem;"><i class="fab fa-github"></i></a>
             </div>
+            <p style="color: var(--text-muted); font-size: 0.85rem; letter-spacing: 1px;">
+                &copy; 2026 TEUKU RIJUL | STRATEGIC CYBER ARCHITECT. PROTECTING GLOBAL ASSETS.
+            </p>
         </div>
     </footer>
 
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Mobile Menu Toggle
-        const menuToggle = document.getElementById('menuToggle');
-        const navLinks = document.getElementById('navLinks');
-        
-        menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            menuToggle.querySelector('i').classList.toggle('fa-bars');
-            menuToggle.querySelector('i').classList.toggle('fa-times');
-        });
-        
-        // Close mobile menu when clicking a link
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                menuToggle.querySelector('i').classList.add('fa-bars');
-                menuToggle.querySelector('i').classList.remove('fa-times');
-            });
-        });
-        
-        // Animation on scroll
-        document.addEventListener('DOMContentLoaded', function() {
-            const animateElements = document.querySelectorAll('.animate');
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = 1;
-                        entry.target.style.visibility = 'visible';
-                    }
-                });
-            }, {
-                threshold: 0.1
-            });
-            
-            animateElements.forEach(element => {
-                element.style.opacity = 0;
-                element.style.visibility = 'hidden';
-                element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-                observer.observe(element);
-            });
-        });
-        
-        // Form submission (prevent default for demo)
-        document.querySelector('.contact-form form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Consultation request received. We will contact you within 2 business hours regarding your cybersecurity needs.');
-            this.reset();
+        AOS.init({ duration: 1200, once: true });
+
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('topHeader');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
         });
     </script>
 </body>
-  </html>
+</html>
