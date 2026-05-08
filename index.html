@@ -3,453 +3,354 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Teuku Rijul | Strategic Cyber Architect & Enterprise Defense</title>
+    <title>RIZU ZAMAN // CYBER ARCHITECT</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Plus+Jakarta+Sans:wght@200;400;600;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Premium Libraries -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.33/dist/lenis.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
     
     <style>
-        :root {
-            --brand-dark: #030712;
-            --brand-surface: #0f172a;
-            --brand-primary: #2563eb;
-            --brand-secondary: #0ea5e9;
-            --brand-accent: #38bdf8;
-            --brand-gold: #fbbf24;
-            --text-light: #f8fafc;
-            --text-muted: #94a3b8;
-            --glass-v2: rgba(30, 41, 59, 0.5);
-            --border-v2: rgba(255, 255, 255, 0.08);
-            --shadow-pro: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap');
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
+        :root {
+            --accent: #00ffaa;
+            --bg: #050505;
         }
 
         body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: var(--brand-dark);
-            color: var(--text-light);
-            line-height: 1.7;
+            background-color: var(--bg);
+            color: #ffffff;
+            font-family: 'Space Grotesk', sans-serif;
             overflow-x: hidden;
         }
 
-        /* --- BACKGROUND DYNAMICS --- */
-        .bg-mesh {
+        canvas#webgl {
             position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at 10% 20%, rgba(37, 99, 235, 0.05) 0%, transparent 40%),
-                        radial-gradient(circle at 90% 80%, rgba(14, 165, 233, 0.05) 0%, transparent 40%);
+            top: 0;
+            left: 0;
             z-index: -1;
+            outline: none;
         }
 
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 3rem;
-        }
-
-        /* --- HEADER --- */
-        header {
-            position: fixed;
-            width: 100%;
-            top: 0; z-index: 1000;
-            padding: 2rem 0;
-            transition: 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-        }
-
-        header.scrolled {
-            padding: 1rem 0;
-            background: rgba(3, 7, 18, 0.8);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border-v2);
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.8rem;
-            font-weight: 700;
-            letter-spacing: -1.5px;
-            color: #fff;
-            text-decoration: none;
-        }
-
-        .logo span { color: var(--brand-primary); }
-
-        .nav-links {
-            display: flex;
-            gap: 4rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            transition: 0.3s;
-        }
-
-        .nav-links a:hover { color: var(--brand-accent); }
-
-        /* --- HERO --- */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-            padding-top: 5rem;
-        }
-
-        .hero-grid {
-            display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            gap: 5rem;
-            align-items: center;
-        }
-
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.8rem;
-            background: rgba(37, 99, 235, 0.1);
-            border: 1px solid rgba(37, 99, 235, 0.2);
-            padding: 0.6rem 1.2rem;
-            border-radius: 100px;
-            color: var(--brand-accent);
-            font-size: 0.75rem;
-            font-weight: 700;
-            letter-spacing: 1px;
-            margin-bottom: 2.5rem;
-        }
-
-        .hero h1 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: clamp(3.5rem, 7vw, 5.5rem);
-            line-height: 1;
-            font-weight: 700;
-            margin-bottom: 2rem;
-        }
-
-        .hero h1 span {
-            background: linear-gradient(90deg, #fff, var(--brand-primary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero p {
-            font-size: 1.25rem;
-            color: var(--text-muted);
-            max-width: 600px;
-            margin-bottom: 3.5rem;
-        }
-
-        .hero-image-box {
-            position: relative;
-            border-radius: 40px;
-            overflow: hidden;
-            box-shadow: var(--shadow-pro);
-            border: 1px solid var(--border-v2);
-        }
-
-        .hero-image-box img {
-            width: 100%;
-            display: block;
-            transition: 0.6s transform cubic-bezier(0.165, 0.84, 0.44, 1);
-        }
-
-        .hero-image-box:hover img { transform: scale(1.05); }
-
-        /* --- TIMELINE SECTION --- */
-        .timeline-section { padding: 10rem 0; background: rgba(15, 23, 42, 0.3); }
-
-        .timeline-container {
-            position: relative;
-            max-width: 900px;
-            margin: 4rem auto;
-        }
-
-        .timeline-container::before {
-            content: '';
-            position: absolute;
-            left: 50%; width: 2px; height: 100%;
-            background: var(--border-v2);
-            transform: translateX(-50%);
-        }
-
-        .timeline-item {
-            margin-bottom: 5rem;
-            position: relative;
-            width: 50%;
-            padding: 0 3rem;
-        }
-
-        .timeline-item:nth-child(odd) { left: 0; text-align: right; }
-        .timeline-item:nth-child(even) { left: 50%; text-align: left; }
-
-        .timeline-dot {
-            position: absolute;
-            width: 20px; height: 20px;
-            background: var(--brand-primary);
+        .custom-cursor {
+            width: 20px;
+            height: 20px;
+            border: 1px solid var(--accent);
             border-radius: 50%;
-            top: 10px;
-            box-shadow: 0 0 20px var(--brand-primary);
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.1s ease;
         }
-
-        .timeline-item:nth-child(odd) .timeline-dot { right: -10px; }
-        .timeline-item:nth-child(even) .timeline-dot { left: -10px; }
-
-        .timeline-content h4 { color: var(--brand-accent); font-size: 1.4rem; }
-        .timeline-content span { font-size: 0.8rem; color: var(--text-muted); }
-
-        /* --- CARDS & SERVICES --- */
-        .services-pro { padding: 10rem 0; }
 
         .glass-card {
-            background: var(--glass-v2);
-            border: 1px solid var(--border-v2);
-            backdrop-filter: blur(15px);
-            padding: 4rem;
-            border-radius: 40px;
-            transition: 0.4s;
-            position: relative;
-            overflow: hidden;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
         }
-
-        .glass-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(45deg, transparent, rgba(37, 99, 235, 0.1));
-            opacity: 0; transition: 0.4s;
-        }
-
-        .glass-card:hover::before { opacity: 1; }
 
         .glass-card:hover {
-            transform: translateY(-15px);
-            border-color: var(--brand-primary);
-            box-shadow: 0 40px 80px -20px rgba(0,0,0,0.6);
+            border-color: var(--accent);
+            background: rgba(255, 255, 255, 0.06);
+            transform: translateY(-10px);
         }
 
-        .card-icon {
-            font-size: 3rem;
-            margin-bottom: 2.5rem;
-            color: var(--brand-accent);
-        }
+        .mono { font-family: 'JetBrains Mono', monospace; }
 
-        /* --- CTA BOX --- */
-        .cta-premium {
-            background: linear-gradient(135deg, #1e293b 0%, #030712 100%);
-            border-radius: 60px;
-            padding: 6rem;
-            border: 1px solid var(--border-v2);
+        /* Preloader */
+        #loader {
+            position: fixed;
+            inset: 0;
+            background: #000;
+            z-index: 10000;
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            gap: 4rem;
+            justify-content: center;
+            flex-direction: column;
         }
 
-        .btn-premium {
-            background: var(--brand-primary);
-            color: white;
-            padding: 1.5rem 3.5rem;
-            border-radius: 20px;
-            font-weight: 800;
-            text-decoration: none;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-size: 0.9rem;
-            transition: 0.4s;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 15px 30px rgba(37, 99, 235, 0.3);
+        .scanning-line {
+            width: 100%;
+            height: 2px;
+            background: var(--accent);
+            position: absolute;
+            box-shadow: 0 0 20px var(--accent);
+            animation: scan 2s linear infinite;
         }
 
-        .btn-premium:hover {
-            background: var(--brand-secondary);
-            transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 25px 50px rgba(37, 99, 235, 0.4);
+        @keyframes scan {
+            0% { top: 0; }
+            100% { top: 100%; }
         }
 
-        /* --- FOOTER --- */
-        footer {
-            padding: 8rem 0 4rem;
-            text-align: center;
-            background: #020617;
-        }
-
-        .sig-footer {
-            height: 70px;
-            filter: invert(1);
-            opacity: 0.7;
-            margin-bottom: 3rem;
-        }
-
-        /* --- MOBILE --- */
-        @media (max-width: 1024px) {
-            .hero-grid { grid-template-columns: 1fr; text-align: center; }
-            .hero-content { order: 2; }
-            .hero-image-box { order: 1; max-width: 500px; margin: 0 auto; }
-            .hero h1 { font-size: 3.5rem; }
-            .cta-premium { flex-direction: column; text-align: center; padding: 4rem 2rem; }
-            .timeline-container::before { left: 0; }
-            .timeline-item { width: 100%; text-align: left !important; padding-left: 3rem; }
-            .timeline-dot { left: -10px !important; }
-            .nav-links { display: none; }
+        .text-outline {
+            -webkit-text-stroke: 1px rgba(255,255,255,0.2);
+            color: transparent;
         }
     </style>
 </head>
 <body>
 
-    <div class="bg-mesh"></div>
-
-    <header id="topHeader">
-        <div class="container">
-            <nav>
-                <a href="#" class="logo">RIJUL<span>STRATEGIC</span></a>
-                <ul class="nav-links">
-                    <li><a href="#about">Milestones</a></li>
-                    <li><a href="#services">Architecture</a></li>
-                    <li><a href="#contact">Consultation</a></li>
-                </ul>
-                <div class="header-action">
-                    <a href="#contact" class="btn-premium" style="padding: 0.8rem 2rem; border-radius: 12px; font-size: 0.7rem;">Secure Briefing</a>
-                </div>
-            </nav>
+    <!-- Preloader -->
+    <div id="loader">
+        <div class="scanning-line"></div>
+        <div class="mono text-accent mb-4" id="load-text">INITIALIZING_SECURE_CONNECTION...</div>
+        <div class="w-64 h-1 bg-white/10 overflow-hidden">
+            <div id="load-bar" class="h-full bg-[#00ffaa] w-0"></div>
         </div>
-    </header>
+    </div>
 
-    <section class="hero">
-        <div class="container">
-            <div class="hero-grid">
-                <div class="hero-content" data-aos="fade-right">
-                    <div class="hero-badge">
-                        <i class="fas fa-microchip"></i> QUANTUM-READY SECURITY ARCHITECTURE
-                    </div>
-                    <h1>Fortifying the <span>Future</span> of Enterprise.</h1>
-                    <p>Strategic cybersecurity defense for the world's most critical infrastructures. Led by Teuku Rijul, an elite architect with 12+ years of battlefield experience.</p>
-                    <div style="display: flex; gap: 2rem; align-items: center;">
-                        <a href="#contact" class="btn-premium">Initiate Partnership <i class="fas fa-chevron-right" style="margin-left: 10px;"></i></a>
-                    </div>
-                </div>
-                <div class="hero-image-box" data-aos="zoom-in" data-aos-delay="200">
-                    <img src="https://i.ibb.co/CKQcWcvP/IMG-20260122-224519.png" alt="Teuku Rijul Professional">
-                </div>
-            </div>
+    <div class="custom-cursor"></div>
+    <canvas id="webgl"></canvas>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-[100] px-10 py-8 flex justify-between items-center mix-blend-difference">
+        <div class="text-2xl font-bold tracking-tighter mono">
+            R<span class="text-[#00ffaa]">Z</span>
         </div>
-    </section>
+        <div class="hidden md:flex gap-12 text-[11px] font-bold tracking-[0.3em] mono uppercase">
+            <a href="#about" class="hover:text-[#00ffaa] transition-all">Defenses</a>
+            <a href="#ops" class="hover:text-[#00ffaa] transition-all">Operations</a>
+            <a href="#contact" class="hover:text-[#00ffaa] transition-all">Handshake</a>
+        </div>
+        <div class="mono text-[11px] border border-white/20 px-4 py-2 rounded-full">
+            EST_2026 // NODE_01
+        </div>
+    </nav>
 
-    <section class="timeline-section" id="about">
-        <div class="container">
-            <div style="text-align: center; margin-bottom: 6rem;" data-aos="fade-up">
-                <h2 style="font-family: 'Space Grotesk'; font-size: 3rem;">Professional Milestones</h2>
-                <p style="color: var(--text-muted);">A decade of securing high-value digital ecosystems.</p>
-            </div>
-            
-            <div class="timeline-container">
-                <div class="timeline-item" data-aos="fade-right">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <span>2024 - 2026</span>
-                        <h4>Lead Security Architect</h4>
-                        <p>Managing defense systems for Global Tier-1 Financial Institutions.</p>
-                    </div>
-                </div>
-                <div class="timeline-item" data-aos="fade-left">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <span>2020 - 2023</span>
-                        <h4>Strategic Threat Intel</h4>
-                        <p>Developed AI-driven threat hunting models for Gov-Tech sectors.</p>
-                    </div>
-                </div>
-                <div class="timeline-item" data-aos="fade-right">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <span>2015 - 2019</span>
-                        <h4>Infrastructure Hardening</h4>
-                        <p>Redesigned Zero-Trust networks for multinational conglomerates.</p>
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="min-h-screen flex flex-col justify-center px-10 md:px-24">
+            <div class="max-w-6xl">
+                <h1 class="text-[12vw] md:text-[8vw] font-bold leading-none tracking-tighter mb-8">
+                    RIZU ZAMAN<br>
+                    <span class="text-outline italic">CYBER ARCHITECT</span>
+                </h1>
+                <div class="flex flex-col md:flex-row md:items-end gap-12">
+                    <p class="text-gray-400 max-w-md text-lg leading-relaxed">
+                        Membangun benteng digital masa depan melalui Advanced Penetration Testing, Cloud Infrastructure Defense, dan Threat Intelligence.
+                    </p>
+                    <div class="flex gap-4">
+                        <div class="p-[1px] bg-gradient-to-r from-[#00ffaa] to-blue-600 rounded-full">
+                            <button class="bg-black px-8 py-4 rounded-full font-bold mono text-xs hover:bg-transparent transition-all">
+                                VIEW OPERATIONS_
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="services-pro" id="services">
-        <div class="container">
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 3rem;">
-                <div class="glass-card" data-aos="fade-up">
-                    <div class="card-icon"><i class="fas fa-project-diagram"></i></div>
-                    <h3>Global Architecture</h3>
-                    <p style="color: var(--text-muted); margin-top: 1.5rem;">Scalable security designs for distributed cloud environments and hybrid infrastructures.</p>
+        <!-- Stats Section -->
+        <section id="about" class="py-40 px-10">
+            <div class="grid md:grid-cols-4 gap-1 border-y border-white/10">
+                <div class="py-20 px-8 border-x border-white/10">
+                    <div class="text-5xl font-bold mb-4 mono text-[#00ffaa]">500+</div>
+                    <div class="text-xs uppercase tracking-widest text-gray-500 font-bold">Threats Neutralized</div>
                 </div>
-                <div class="glass-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="card-icon"><i class="fas fa-user-secret"></i></div>
-                    <h3>Board Intelligence</h3>
-                    <p style="color: var(--text-muted); margin-top: 1.5rem;">C-suite advisory focusing on ROI-driven security investment and risk mitigation strategies.</p>
+                <div class="py-20 px-8 border-x border-white/10">
+                    <div class="text-5xl font-bold mb-4 mono">99%</div>
+                    <div class="text-xs uppercase tracking-widest text-gray-500 font-bold">Uptime Guaranteed</div>
+                </div>
+                <div class="py-20 px-8 border-x border-white/10">
+                    <div class="text-5xl font-bold mb-4 mono text-[#00ffaa]">12+</div>
+                    <div class="text-xs uppercase tracking-widest text-gray-500 font-bold">Global Certs</div>
+                </div>
+                <div class="py-20 px-8 border-x border-white/10">
+                    <div class="text-5xl font-bold mb-4 mono">24/7</div>
+                    <div class="text-xs uppercase tracking-widest text-gray-500 font-bold">Active Monitoring</div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="contact-area" id="contact" style="padding: 10rem 0;">
-        <div class="container">
-            <div class="cta-premium" data-aos="zoom-out">
-                <div style="max-width: 600px;">
-                    <h2 style="font-family: 'Space Grotesk'; font-size: 3.5rem; line-height: 1.1; margin-bottom: 2rem;">Ready for an Elite Defense?</h2>
-                    <p style="font-size: 1.2rem; opacity: 0.8; margin-bottom: 3rem;">Contact Teuku Rijul for high-level enterprise consultation and architectural oversight.</p>
-                    <div style="display: flex; gap: 1.5rem;">
-                        <span style="font-size: 0.8rem; color: var(--brand-accent); font-weight: 700;">#CISSP</span>
-                        <span style="font-size: 0.8rem; color: var(--brand-accent); font-weight: 700;">#OSCP</span>
-                        <span style="font-size: 0.8rem; color: var(--brand-accent); font-weight: 700;">#ENTERPRISE_READY</span>
+        <!-- Bento Portfolio -->
+        <section id="ops" class="py-40 px-10">
+            <div class="max-w-7xl mx-auto">
+                <div class="mb-20">
+                    <h2 class="text-6xl font-bold tracking-tighter">SELECTED_ <br><span class="text-outline">OPERATIONS</span></h2>
+                </div>
+                
+                <div class="grid md:grid-cols-12 gap-4 auto-rows-[300px]">
+                    <div class="md:col-span-8 glass-card rounded-3xl p-10 flex flex-col justify-between overflow-hidden relative group">
+                        <i data-lucide="shield-check" class="w-12 h-12 text-[#00ffaa]"></i>
+                        <div>
+                            <h3 class="text-3xl font-bold mb-2">Project Aegis</h3>
+                            <p class="text-gray-400">Hardening infrastructure untuk Fintech Unicorn.</p>
+                        </div>
+                        <div class="absolute right-0 bottom-0 opacity-10 group-hover:opacity-100 transition-all">
+                             <div class="text-[100px] font-bold mono -mb-10 -mr-10 text-outline">01</div>
+                        </div>
+                    </div>
+                    
+                    <div class="md:col-span-4 glass-card rounded-3xl p-10 flex flex-col justify-between border-b-4 border-b-[#00ffaa]">
+                        <i data-lucide="lock" class="w-12 h-12"></i>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">Zero Trust</h3>
+                            <p class="text-sm text-gray-400">Arsitektur keamanan untuk sistem cloud hibrida.</p>
+                        </div>
+                    </div>
+
+                    <div class="md:col-span-4 glass-card rounded-3xl p-10 flex flex-col justify-between">
+                        <i data-lucide="cpu" class="w-12 h-12 text-blue-500"></i>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">Kernel Defense</h3>
+                            <p class="text-sm text-gray-400">Analisis kerentanan pada level sistem operasi.</p>
+                        </div>
+                    </div>
+
+                    <div class="md:col-span-8 glass-card rounded-3xl p-10 flex flex-col justify-between relative overflow-hidden group">
+                        <i data-lucide="code-2" class="w-12 h-12"></i>
+                        <div class="flex flex-col gap-2">
+                            <h3 class="text-3xl font-bold">Automated Exploit Detection</h3>
+                            <p class="text-gray-400">Sistem AI untuk mendeteksi anomali pada trafik data.</p>
+                        </div>
                     </div>
                 </div>
-                <div style="flex-shrink: 0;">
-                    <button class="btn-premium" onclick="window.location.href='mailto:your-email@domain.com'">Request Secure Consultation</button>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer id="contact" class="py-40 px-10 border-t border-white/5 bg-black">
+            <div class="max-w-7xl mx-auto flex flex-col items-center text-center">
+                <div class="mono text-[#00ffaa] mb-8 text-sm tracking-[0.5em]">READY_FOR_ENGAGEMENT</div>
+                <h2 class="text-[8vw] font-bold tracking-tighter leading-none mb-20">
+                    SECURE YOUR <br> <span class="text-outline">LEGACY</span>
+                </h2>
+                
+                <div class="grid md:grid-cols-3 gap-20 w-full mb-32">
+                    <div>
+                        <div class="mono text-[10px] text-gray-500 mb-4 uppercase">Direct Line</div>
+                        <a href="#" class="text-xl hover:text-[#00ffaa] transition-colors font-medium underline">rizu@zaman.security</a>
+                    </div>
+                    <div>
+                        <div class="mono text-[10px] text-gray-500 mb-4 uppercase">Neural Network</div>
+                        <div class="flex justify-center gap-8 font-bold text-sm tracking-widest uppercase">
+                            <a href="#" class="hover:text-[#00ffaa]">Linkedin</a>
+                            <a href="#" class="hover:text-[#00ffaa]">Github</a>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="mono text-[10px] text-gray-500 mb-4 uppercase">Location</div>
+                        <div class="text-xl">REMOTE / CYBERSPACE</div>
+                    </div>
+                </div>
+                
+                <div class="mono text-[10px] text-gray-600">
+                    SYSTEM STATUS: OPTIMIZED // © 2026 RIZU ZAMAN CO.
                 </div>
             </div>
-        </div>
-    </section>
+        </footer>
+    </main>
 
-    <footer>
-        <div class="container">
-            <img src="https://i.ibb.co/27DYMVY5/1766433867655.jpg" alt="Signature" class="sig-footer">
-            <div style="display: flex; justify-content: center; gap: 3rem; margin-bottom: 3rem;">
-                <a href="#" style="color: var(--text-muted); font-size: 1.5rem;"><i class="fab fa-linkedin"></i></a>
-                <a href="#" style="color: var(--text-muted); font-size: 1.5rem;"><i class="fab fa-twitter"></i></a>
-                <a href="#" style="color: var(--text-muted); font-size: 1.5rem;"><i class="fab fa-github"></i></a>
-            </div>
-            <p style="color: var(--text-muted); font-size: 0.85rem; letter-spacing: 1px;">
-                &copy; 2026 TEUKU RIJUL | STRATEGIC CYBER ARCHITECT. PROTECTING GLOBAL ASSETS.
-            </p>
-        </div>
-    </footer>
-
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({ duration: 1200, once: true });
+        // Smooth Scroll (Lenis)
+        const lenis = new Lenis();
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
 
-        window.addEventListener('scroll', () => {
-            const header = document.getElementById('topHeader');
-            if (window.scrollY > 100) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
+        // Custom Cursor
+        const cursor = document.querySelector('.custom-cursor');
+        window.addEventListener('mousemove', e => {
+            gsap.to(cursor, {
+                x: e.clientX - 10,
+                y: e.clientY - 10,
+                duration: 0.1
+            });
+        });
+
+        // Preloader Logic
+        let progress = 0;
+        const loadBar = document.getElementById('load-bar');
+        const loadText = document.getElementById('load-text');
+        
+        const interval = setInterval(() => {
+            progress += Math.random() * 15;
+            if (progress >= 100) {
+                progress = 100;
+                clearInterval(interval);
+                gsap.to('#loader', {
+                    opacity: 0,
+                    duration: 1,
+                    onComplete: () => {
+                        document.getElementById('loader').style.display = 'none';
+                        revealHero();
+                    }
+                });
             }
+            loadBar.style.width = progress + '%';
+            loadText.innerText = `DECRYPTING_SYSTEM_DATA_${Math.floor(progress)}%`;
+        }, 150);
+
+        function revealHero() {
+            gsap.from("h1", { y: 100, opacity: 0, duration: 1.5, ease: "expo.out" });
+        }
+
+        // Three.js 3D Grid Background
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('webgl'), antialias: true, alpha: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+        const geometry = new THREE.PlaneGeometry(100, 100, 50, 50);
+        const material = new THREE.MeshBasicMaterial({ 
+            color: 0x00ffaa, 
+            wireframe: true, 
+            transparent: true, 
+            opacity: 0.15 
+        });
+        const plane = new THREE.Mesh(geometry, material);
+        plane.rotation.x = -Math.PI / 2.5;
+        scene.add(plane);
+
+        camera.position.z = 5;
+        camera.position.y = 2;
+
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        // Animation Loop
+        function animate() {
+            requestAnimationFrame(animate);
+            plane.rotation.z += 0.001;
+            
+            // Subtle movement based on scroll
+            const scroll = window.scrollY;
+            plane.position.z = scroll * 0.005;
+            
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        // Lucide Icons
+        lucide.createIcons();
+
+        // GSAP Scroll Animations
+        gsap.registerPlugin(ScrollTrigger);
+        gsap.utils.toArray('.glass-card').forEach(card => {
+            gsap.from(card, {
+                scrollTrigger: {
+                    trigger: card,
+                    start: "top bottom-=100",
+                    toggleActions: "play none none reverse"
+                },
+                y: 60,
+                opacity: 0,
+                duration: 1,
+                ease: "expo.out"
+            });
         });
     </script>
 </body>
